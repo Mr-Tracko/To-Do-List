@@ -1,0 +1,255 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(125deg, #ff7eb3, #7868e6, #4776e6);
+    background-size: 300% 300%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    padding: 70px;
+    height: auto;
+    overflow-y: auto;
+} 
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.todo{
+    width: 100%;
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 
+                0 0 30px rgba(255, 255, 255, 0.15) inset;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(0);
+    transition: all 0.4s ease;
+    /* Removed fixed height to allow content expansion */
+    height: auto;
+    min-height: 200px;
+}
+
+.todo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3), 
+                0 0 35px rgba(255, 255, 255, 0.2) inset;
+}
+
+.todo h1{
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, #5f2c82, #7868e6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.todo img{
+    height: 42px;
+    width: 42px;
+    position: relative;
+    margin-left: 12px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.todo img:hover {
+    transform: rotate(15deg);
+}
+
+.row{
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #f1f1f1, #e8e8e8);
+    border-radius: 50px;
+    padding: 0 8px 0 25px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.row:focus-within {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05), 0 0 0 3px rgba(120, 104, 230, 0.2);
+}
+
+.row input{
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    color: #444;
+    background: transparent;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.row input::placeholder {
+    color: #9b9b9b;
+    font-weight: 300;
+}
+
+.row button{
+    border-radius: 50px;
+    height: 45px;
+    width: 80px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #5f2c82, #7868e6);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(95, 44, 130, 0.4);
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.row button:hover {
+    background: linear-gradient(135deg, #7868e6, #5f2c82);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(95, 44, 130, 0.5);
+}
+
+.row button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 10px rgba(95, 44, 130, 0.4);
+}
+
+ul {
+    margin-top: 10px;
+    /* Removed max-height constraint to allow list to expand */
+    /* The container will now grow naturally with content */
+    overflow-y: visible;
+    padding-right: 10px;
+}
+
+ul::-webkit-scrollbar {
+    width: 8px;
+}
+
+ul::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #5f2c82, #7868e6);
+    border-radius: 10px;
+}
+
+ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 16px 15px 16px 60px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(to right, #f9f9f9, #f3f3f3);
+    margin-bottom: 15px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #7868e6;
+}
+
+ul li:hover {
+    background: linear-gradient(to right, #f3f3f3, #e9e9e9);
+    transform: translateX(3px);
+}
+
+ul li::before{
+    position: absolute;
+    content: '';
+    height: 28px;
+    width: 28px;
+    background-image: url(images/unchecked2.png);
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    top: 14px;
+    left: 18px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+ul li.checked{
+    color: #999;
+    text-decoration: line-through;
+    background: linear-gradient(to right, #f0f0f0, #e6e6e6);
+    border-left: 4px solid #cccccc;
+}
+
+ul li.checked::before{
+    background-image: url(images/checked.png);
+}
+
+ul li span{
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 28px;
+    height: 28px;
+    color: white;
+    background: linear-gradient(135deg, #ff6b6b, #ee0979);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(238, 9, 121, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0.85;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+ul li span:hover{
+    background: linear-gradient(135deg, #ee0979, #ff6b6b);
+    transform: scale(1.2) rotate(10deg);
+    opacity: 1;
+    box-shadow: 0 5px 12px rgba(238, 9, 121, 0.4);
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 15px;
+    }
+    
+    .todo {
+        padding: 25px 18px;
+    }
+    
+    .row {
+        height: 50px;
+    }
+    
+    ul li {
+        padding: 14px 12px 14px 55px;
+    }
+}
